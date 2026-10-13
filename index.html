@@ -1,0 +1,452 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>블루비즈 | 공장 전체를 실시간으로 확인합니다</title>
+<meta name="description" content="㈜블루비즈는 설비·생산·품질·재고 데이터를 하나의 화면으로 연결하는 제조 ICT 솔루션 전문기업입니다. BlueFAC·BluePOP·BlueWMS·FHMS·MoFAC·SelfFAC 통합 플랫폼과 무료 진단을 확인해 보세요.">
+<meta name="theme-color" content="#061118">
+<meta property="og:type" content="website">
+<meta property="og:title" content="블루비즈 | 공장 전체를 실시간으로 확인합니다">
+<meta property="og:description" content="설비·생산·품질·재고 데이터를 하나의 화면으로 연결하는 블루비즈의 통합 제조 플랫폼.">
+<meta property="og:image" content="assets/img/og-cover.webp">
+<meta property="og:url" content="https://www.blue-biz.co.kr/">
+<meta property="og:locale" content="ko_KR">
+<!-- TODO: 실제 파비콘 경로로 교체 -->
+<link rel="icon" href="assets/img/favicon.ico">
+<link rel="stylesheet" href="assets/css/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "㈜블루비즈",
+  "alternateName": "BlueBiz Co., Ltd.",
+  "url": "https://www.blue-biz.co.kr/",
+  "foundingDate": "2014",
+  "slogan": "Smart Technology, Smart Company, Smart Future"
+}
+</script>
+</head>
+<body data-page="home" class="has-mobile-cta">
+<a class="skip-link" href="#main">본문 바로가기</a>
+
+<!-- ============ SVG ICON SPRITE ============ -->
+<svg style="display:none" aria-hidden="true">
+  <symbol id="ic-home" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 11.5 12 4l8 7.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 10v9.5h12V10" stroke-linejoin="round"/><path d="M10 19.5v-6h4v6" stroke-linejoin="round"/></symbol>
+  <symbol id="ic-grid" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3.5" y="3.5" width="7" height="7" rx="1.4"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.4"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.4"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.4"/></symbol>
+  <symbol id="ic-monitor" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4.5" width="18" height="12" rx="1.6"/><path d="M9 20.5h6M12 16.5v4" stroke-linecap="round"/></symbol>
+  <symbol id="ic-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="ic-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 7h16M4 12h16M4 17h16" stroke-linecap="round"/></symbol>
+  <symbol id="ic-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 6l12 12M18 6 6 18" stroke-linecap="round"/></symbol>
+  <symbol id="ic-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="ic-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5" stroke-linecap="round"/></symbol>
+  <symbol id="ic-gauge" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 15a8 8 0 1 1 16 0" stroke-linecap="round"/><path d="M12 15l4-5" stroke-linecap="round"/><circle cx="12" cy="15" r="1.4" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="ic-chart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 20V10M12 20V4M20 20v-7" stroke-linecap="round"/></symbol>
+  <symbol id="ic-alert" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 4 2 20h20L12 4Z" stroke-linejoin="round"/><path d="M12 10v4" stroke-linecap="round"/><circle cx="12" cy="17" r="1" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="ic-box" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 8l9-4 9 4-9 4-9-4Z" stroke-linejoin="round"/><path d="M3 8v9l9 4 9-4V8" stroke-linejoin="round"/><path d="M12 12v9" /></symbol>
+  <symbol id="ic-cpu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="6" y="6" width="12" height="12" rx="2"/><path d="M9 3v3M15 3v3M9 18v3M15 18v3M3 9h3M3 15h3M18 9h3M18 15h3" stroke-linecap="round"/></symbol>
+  <symbol id="ic-cloud" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 18a4.5 4.5 0 0 1-.6-8.96A5.5 5.5 0 0 1 17.2 8.1 4 4 0 0 1 17 18H7Z" stroke-linejoin="round"/></symbol>
+  <symbol id="ic-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3Z" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="ic-mobile" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="7" y="2.5" width="10" height="19" rx="2.2"/><path d="M11 18h2" stroke-linecap="round"/></symbol>
+  <symbol id="ic-factory" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 21V11l5 3v-3l5 3V6l6 4v11H3Z" stroke-linejoin="round"/><path d="M3 21h18" stroke-linecap="round"/></symbol>
+  <symbol id="ic-food" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 10h16M4 10c0 4.5 3.6 8 8 8s8-3.5 8-8M9 6c.6-.5.6-1.5 0-2M15 6c.6-.5.6-1.5 0-2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="ic-ship" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 15l1.5 5h13L20 15" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 15V6h5l4 4v5" stroke-linejoin="round"/></symbol>
+  <symbol id="ic-doc" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 2h9l4 4v16H6V2Z" stroke-linejoin="round"/><path d="M14 2v5h5M9 12h6M9 16h6" stroke-linecap="round"/></symbol>
+  <symbol id="ic-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 6.5 8 6 8-6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 13l4.5 4.5L19 8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</svg>
+
+<!-- ============ APP SHELL: 좌측 사이드바 ============ -->
+<aside class="app-sidebar is-expanded" id="appSidebar">
+  <div class="sidebar-top">
+    <a href="index.html" class="logo" aria-label="블루비즈 홈으로 이동">
+      <!-- TODO: 실제 로고 파일(assets/img/logo.svg)로 교체 가능 -->
+      <span class="mark"><svg viewBox="0 0 40 40" fill="none"><path d="M20 2 36 11v18L20 38 4 29V11L20 2Z" fill="#0D222C" stroke="#20C7F4" stroke-width="1.6"/><path d="M13 24V15l7-4 7 4v9l-7 4-7-4Z" fill="#20C7F4"/></svg></span>
+      <span class="sidebar-logo-text">BlueBiz</span>
+    </a>
+  </div>
+  <nav class="sidebar-nav" aria-label="주요 메뉴">
+    <a href="index.html" data-nav="home" data-tooltip="홈"><span class="s-icon"><svg><use href="#ic-home"/></svg></span><span class="s-label">홈</span></a>
+    <a href="pages/solutions.html" data-nav="solutions" data-tooltip="솔루션"><span class="s-icon"><svg><use href="#ic-grid"/></svg></span><span class="s-label">솔루션</span></a>
+    <a href="pages/flow.html" data-nav="flow" data-tooltip="연결 구조"><span class="s-icon"><svg><use href="#ic-cpu"/></svg></span><span class="s-label">연결 구조</span></a>
+    <a href="pages/proof.html" data-nav="proof" data-tooltip="실제 화면"><span class="s-icon"><svg><use href="#ic-monitor"/></svg></span><span class="s-label">실제 화면</span></a>
+    <a href="pages/industries.html" data-nav="industries" data-tooltip="산업별 적용"><span class="s-icon"><svg><use href="#ic-factory"/></svg></span><span class="s-label">산업별 적용</span></a>
+    <a href="pages/cases.html" data-nav="cases" data-tooltip="구축사례"><span class="s-icon"><svg><use href="#ic-doc"/></svg></span><span class="s-label">구축사례</span></a>
+    <a href="pages/contact.html" data-nav="contact" data-tooltip="문의"><span class="s-icon"><svg><use href="#ic-mail"/></svg></span><span class="s-label">문의</span></a>
+  </nav>
+  <button class="sidebar-toggle" id="sidebarToggle" aria-label="사이드바 접기/펼치기" aria-pressed="true" type="button">
+    <svg><use href="#ic-chevron"/></svg>
+  </button>
+</aside>
+
+<!-- ============ APP SHELL: 상단 슬림 바 ============ -->
+<div class="app-topbar">
+  <div class="topbar-left">BlueBiz <span>/</span> 홈</div>
+  <div class="topbar-right">
+    <a href="pages/resources.html">자료실</a>
+    <a href="pages/about.html">회사소개</a>
+    <a href="pages/contact.html" class="btn btn-primary">무료 진단</a>
+  </div>
+</div>
+
+<!-- ============ 모바일 헤더 ============ -->
+<div class="mobile-header">
+  <a href="index.html" class="logo"><span class="mark"><svg viewBox="0 0 40 40" fill="none"><path d="M20 2 36 11v18L20 38 4 29V11L20 2Z" fill="#0D222C" stroke="#20C7F4" stroke-width="1.6"/><path d="M13 24V15l7-4 7 4v9l-7 4-7-4Z" fill="#20C7F4"/></svg></span>BlueBiz</a>
+  <div style="display:flex;align-items:center;gap:8px;">
+    <a href="pages/contact.html" class="btn btn-primary" style="padding:9px 14px;font-size:12.5px;">무료 진단</a>
+    <button class="hamburger" id="mobileDrawerToggle" aria-label="메뉴 열기" aria-expanded="false" aria-controls="mobileDrawer" type="button"><svg><use href="#ic-menu"/></svg></button>
+  </div>
+</div>
+
+<!-- ============ 모바일 드로어 ============ -->
+<div class="mobile-drawer" id="mobileDrawer" role="dialog" aria-modal="true" aria-label="모바일 메뉴">
+  <div class="mobile-drawer-top">
+    <span class="logo"><span class="mark"><svg viewBox="0 0 40 40" fill="none"><path d="M20 2 36 11v18L20 38 4 29V11L20 2Z" fill="#0D222C" stroke="#20C7F4" stroke-width="1.6"/><path d="M13 24V15l7-4 7 4v9l-7 4-7-4Z" fill="#20C7F4"/></svg></span>BlueBiz</span>
+    <button class="hamburger" id="mobileDrawerClose" aria-label="메뉴 닫기" type="button"><svg><use href="#ic-close"/></svg></button>
+  </div>
+  <nav aria-label="모바일 메뉴">
+    <a href="index.html" data-nav="home"><svg><use href="#ic-home"/></svg>홈</a>
+    <a href="pages/solutions.html" data-nav="solutions"><svg><use href="#ic-grid"/></svg>솔루션</a>
+    <a href="pages/flow.html" data-nav="flow"><svg><use href="#ic-cpu"/></svg>연결 구조</a>
+    <a href="pages/proof.html" data-nav="proof"><svg><use href="#ic-monitor"/></svg>실제 화면</a>
+    <a href="pages/industries.html" data-nav="industries"><svg><use href="#ic-factory"/></svg>산업별 적용</a>
+    <a href="pages/cases.html" data-nav="cases"><svg><use href="#ic-doc"/></svg>구축사례</a>
+    <a href="pages/resources.html" data-nav="resources"><svg><use href="#ic-doc"/></svg>자료실</a>
+    <a href="pages/about.html" data-nav="about"><svg><use href="#ic-home"/></svg>회사소개</a>
+    <a href="pages/contact.html" data-nav="contact"><svg><use href="#ic-mail"/></svg>문의</a>
+  </nav>
+  <a href="pages/contact.html" class="btn btn-primary btn-block">무료 진단 신청</a>
+</div>
+
+<div class="partner-strip" data-needs-verification="true">
+  <span class="partner-strip-label">함께한<br>기업들</span>
+  <div class="partner-marquee">
+    <div class="partner-logo-track">
+      <div class="partner-logo-item"><span class="partner-logo-box" title="터보링크"><img src="assets/img/logos/turbolink-logo.png" alt="터보링크" loading="eager"></span></div>
+      <div class="partner-logo-item"><a class="partner-logo-link" href="http://mes.tct.co.kr" target="_blank" rel="noopener noreferrer" title="TCT 운영 화면 (새 창)"><span class="partner-logo-box" title="TCT"><img src="assets/img/logos/tct-logo.png" alt="TCT" loading="eager"></span></a></div>
+      <div class="partner-logo-item"><a class="partner-logo-link" href="http://211.225.116.167:8080" target="_blank" rel="noopener noreferrer" title="(주)세인식품 운영 화면 (새 창)"><span class="partner-logo-box" title="(주)세인식품"><img src="assets/img/logos/seine-food.png" alt="(주)세인식품" loading="eager"></span></a></div>
+      <div class="partner-logo-item"><a class="partner-logo-link" href="http://192.168.0.8/publish.htm" target="_blank" rel="noopener noreferrer" title="옵티시스 운영 화면 (새 창)"><span class="partner-logo-box" title="옵티시스"><img src="assets/img/logos/opticis.webp" alt="옵티시스" loading="eager"></span></a></div>
+      <div class="partner-logo-item"><a class="partner-logo-link" href="http://ltc.iptime.org" target="_blank" rel="noopener noreferrer" title="(주)엘티씨 운영 화면 (새 창)"><span class="partner-logo-box" title="(주)엘티씨"><img src="assets/img/logos/ltc.jpg" alt="(주)엘티씨" loading="eager"></span></a></div>
+      <div class="partner-logo-item"><a class="partner-logo-link" href="http://baeksemes.iptime.org" target="_blank" rel="noopener noreferrer" title="백세 운영 화면 (새 창)"><span class="partner-logo-box" title="백세"><img src="assets/img/logos/baekse.png" alt="백세" loading="eager"></span></a></div>
+      <div class="partner-logo-item"><a class="partner-logo-link" href="http://gupanjang.iptime.org" target="_blank" rel="noopener noreferrer" title="갈비구판장(사미헌) 운영 화면 (새 창)"><span class="partner-logo-box" title="갈비구판장(사미헌)"><img src="assets/img/logos/samiheon.png" alt="갈비구판장(사미헌)" loading="eager"></span></a></div>
+      <div class="partner-logo-item"><a class="partner-logo-link" href="http://seoilmes.tplinkdns.com" target="_blank" rel="noopener noreferrer" title="서일퍼시픽 운영 화면 (새 창)"><span class="partner-logo-box" title="서일퍼시픽"><img src="assets/img/logos/seoil-pacific.jpg" alt="서일퍼시픽" loading="eager"></span></a></div>
+      <div class="partner-logo-item"><a class="partner-logo-link" href="http://49.247.42.249" target="_blank" rel="noopener noreferrer" title="쓰리축코리아 운영 화면 (새 창)"><span class="partner-logo-box" title="쓰리축코리아"><img src="assets/img/logos/3axis-korea.png" alt="쓰리축코리아" loading="eager"></span></a></div>
+      <div class="partner-logo-item"><a class="partner-logo-link" href="http://jcr.blue-biz.kr" target="_blank" rel="noopener noreferrer" title="제형센터 운영 화면 (새 창)"><span class="partner-logo-box partner-logo-text" title="제형센터">제형센터</span></a></div>
+      <div class="partner-logo-item"><a class="partner-logo-link" href="http://220.124.57.100:4000" target="_blank" rel="noopener noreferrer" title="쌍영방적 운영 화면 (새 창)"><span class="partner-logo-box" title="쌍영방적"><img src="assets/img/logos/ssangyoung.png" alt="쌍영방적" loading="eager"></span></a></div>
+      <div class="partner-logo-item"><a class="partner-logo-link" href="http://49.247.40.190" target="_blank" rel="noopener noreferrer" title="농업회사법인 (주)포렘 운영 화면 (새 창)"><span class="partner-logo-box" title="농업회사법인 (주)포렘"><img src="assets/img/logos/forem.jpg" alt="농업회사법인 (주)포렘" loading="eager"></span></a></div>
+      <div class="partner-logo-item"><a class="partner-logo-link" href="http://49.247.42.104" target="_blank" rel="noopener noreferrer" title="아이버스 운영 화면 (새 창)"><span class="partner-logo-box" title="아이버스"><img src="assets/img/logos/ivers.jpg" alt="아이버스" loading="eager"></span></a></div>
+      <div class="partner-logo-item"><a class="partner-logo-link" href="http://49.247.46.134" target="_blank" rel="noopener noreferrer" title="새만금화학(주) 운영 화면 (새 창)"><span class="partner-logo-box" title="새만금화학(주)"><img src="assets/img/logos/saemangeum-chem.png" alt="새만금화학(주)" loading="eager"></span></a></div>
+      <div class="partner-logo-item"><a class="partner-logo-link" href="http://115.68.228.213" target="_blank" rel="noopener noreferrer" title="신광식품(3공장) 운영 화면 (새 창)"><span class="partner-logo-box" title="신광식품(3공장)"><img src="assets/img/logos/shinkwang-3rd.png" alt="신광식품(3공장)" loading="eager"></span></a></div>
+      <div class="partner-logo-item"><a class="partner-logo-link" href="http://49.247.172.145" target="_blank" rel="noopener noreferrer" title="바로군 운영 화면 (새 창)"><span class="partner-logo-box" title="바로군"><img src="assets/img/logos/barogun.jpg" alt="바로군" loading="eager"></span></a></div>
+      <div class="partner-logo-item"><a class="partner-logo-link" href="http://hwasan4.iptime.org" target="_blank" rel="noopener noreferrer" title="화산 운영 화면 (새 창)"><span class="partner-logo-box partner-logo-text" title="화산">화산</span></a></div>
+      <div class="partner-logo-item"><a class="partner-logo-link" href="http://220.84.77.121" target="_blank" rel="noopener noreferrer" title="(주)용진정밀 운영 화면 (새 창)"><span class="partner-logo-box" title="(주)용진정밀"><img src="assets/img/logos/yongjin.png" alt="(주)용진정밀" loading="eager"></span></a></div>
+      <div class="partner-logo-item"><a class="partner-logo-link" href="http://brmilk-mes.iptime.org" target="_blank" rel="noopener noreferrer" title="보령우유(주) 운영 화면 (새 창)"><span class="partner-logo-box" title="보령우유(주)"><img src="assets/img/logos/boryeong-milk.png" alt="보령우유(주)" loading="eager"></span></a></div>
+      <div class="partner-logo-item"><a class="partner-logo-link" href="http://49.247.174.67" target="_blank" rel="noopener noreferrer" title="이피캠텍 운영 화면 (새 창)"><span class="partner-logo-box" title="이피캠텍"><img src="assets/img/logos/epcamtech.png" alt="이피캠텍" loading="eager"></span></a></div>
+      <div class="partner-logo-item"><a class="partner-logo-link" href="http://49.247.37.216" target="_blank" rel="noopener noreferrer" title="참사랑에프앤비 운영 화면 (새 창)"><span class="partner-logo-box partner-logo-text" title="참사랑에프앤비">참사랑에프앤비</span></a></div>
+      <div class="partner-logo-item"><a class="partner-logo-link" href="http://chambadames.iptime.org" target="_blank" rel="noopener noreferrer" title="참바다&amp;온쿡 운영 화면 (새 창)"><span class="partner-logo-box" title="참바다&amp;온쿡"><img src="assets/img/logos/chambada.png" alt="참바다&amp;온쿡" loading="eager"></span></a></div>
+      <div class="partner-logo-item"><a class="partner-logo-link" href="http://mes.jellomi.co.kr" target="_blank" rel="noopener noreferrer" title="데코리아 운영 화면 (새 창)"><span class="partner-logo-box" title="데코리아"><img src="assets/img/logos/decoria.png" alt="데코리아" loading="eager"></span></a></div>
+      <div class="partner-logo-item"><a class="partner-logo-link" href="http://dongyoungmes.iptime.org" target="_blank" rel="noopener noreferrer" title="동영금속 운영 화면 (새 창)"><span class="partner-logo-box" title="동영금속"><img src="assets/img/logos/dongyoung.png" alt="동영금속" loading="eager"></span></a></div>
+      <div class="partner-logo-item"><a class="partner-logo-link" href="http://hunhun-mes.iptime.org" target="_blank" rel="noopener noreferrer" title="훈훈 운영 화면 (새 창)"><span class="partner-logo-box" title="훈훈"><img src="assets/img/logos/hunhun.jpg" alt="훈훈" loading="eager"></span></a></div>
+      <div class="partner-logo-item"><a class="partner-logo-link" href="http://woonam.iptime.org" target="_blank" rel="noopener noreferrer" title="(주)우남기공 운영 화면 (새 창)"><span class="partner-logo-box" title="(주)우남기공"><img src="assets/img/logos/woonam.gif" alt="(주)우남기공" loading="eager"></span></a></div>
+      <div class="partner-logo-item"><a class="partner-logo-link" href="http://daeyangmes.iptime.org" target="_blank" rel="noopener noreferrer" title="대양물산 운영 화면 (새 창)"><span class="partner-logo-box" title="대양물산"><img src="assets/img/logos/daeyang.png" alt="대양물산" loading="eager"></span></a></div>
+      <div class="partner-logo-item"><a class="partner-logo-link" href="http://tkmes.iptime.org" target="_blank" rel="noopener noreferrer" title="태광 운영 화면 (새 창)"><span class="partner-logo-box" title="태광"><img src="assets/img/logos/taekwang.png" alt="태광" loading="eager"></span></a></div>
+      <div class="partner-logo-item"><a class="partner-logo-link" href="http://saerombnf.iptime.org" target="_blank" rel="noopener noreferrer" title="새롬비앤에프 운영 화면 (새 창)"><span class="partner-logo-box" title="새롬비앤에프"><img src="assets/img/logos/saerom-bnf.jpg" alt="새롬비앤에프" loading="eager"></span></a></div>
+      <div class="partner-logo-item"><a class="partner-logo-link" href="http://soulnature.iptime.org" target="_blank" rel="noopener noreferrer" title="소울네이처푸드 운영 화면 (새 창)"><span class="partner-logo-box" title="소울네이처푸드"><img src="assets/img/logos/soulnature.svg" alt="소울네이처푸드" loading="eager"></span></a></div>
+      <div class="partner-logo-item"><a class="partner-logo-link" href="http://skfmes.iptime.org" target="_blank" rel="noopener noreferrer" title="(주)신광식품 운영 화면 (새 창)"><span class="partner-logo-box" title="(주)신광식품"><img src="assets/img/logos/shinkwang.png" alt="(주)신광식품" loading="eager"></span></a></div>
+      <div class="partner-logo-item"><a class="partner-logo-link" href="http://gschemi.iptime.org" target="_blank" rel="noopener noreferrer" title="금성화학 운영 화면 (새 창)"><span class="partner-logo-box" title="금성화학"><img src="assets/img/logos/geumsung-chem.gif" alt="금성화학" loading="eager"></span></a></div>
+      <div class="partner-logo-item"><a class="partner-logo-link" href="http://49.247.173.22" target="_blank" rel="noopener noreferrer" title="성원엘리베이터 운영 화면 (새 창)"><span class="partner-logo-box" title="성원엘리베이터"><img src="assets/img/logos/sungwon-elevator.jpg" alt="성원엘리베이터" loading="eager"></span></a></div>
+      <div class="partner-logo-item"><a class="partner-logo-link" href="http://115.68.199.46" target="_blank" rel="noopener noreferrer" title="(주)지원테크 운영 화면 (새 창)"><span class="partner-logo-box" title="(주)지원테크"><img src="assets/img/logos/jiwon-tech.jpg" alt="(주)지원테크" loading="eager"></span></a></div>
+      <div class="partner-logo-item"><a class="partner-logo-link" href="http://isaac-mes.iptime.org" target="_blank" rel="noopener noreferrer" title="이삭식품 운영 화면 (새 창)"><span class="partner-logo-box" title="이삭식품"><img src="assets/img/logos/isaac-food.png" alt="이삭식품" loading="eager"></span></a></div>
+      <div class="partner-logo-item"><a class="partner-logo-link" href="http://mes.beobe.kr" target="_blank" rel="noopener noreferrer" title="베오베 운영 화면 (새 창)"><span class="partner-logo-box" title="베오베"><img src="assets/img/logos/beobe.png" alt="베오베" loading="eager"></span></a></div>
+      <div class="partner-logo-item"><a class="partner-logo-link" href="http://49.247.169.186" target="_blank" rel="noopener noreferrer" title="나눔정밀 운영 화면 (새 창)"><span class="partner-logo-box" title="나눔정밀"><img src="assets/img/logos/nanum.png" alt="나눔정밀" loading="eager"></span></a></div>
+      <div class="partner-logo-item"><span class="partner-logo-box" title="터보링크"><img src="assets/img/logos/turbolink-logo.png" alt="터보링크" loading="eager"></span></div>
+      <div class="partner-logo-item"><a class="partner-logo-link" href="http://mes.tct.co.kr" target="_blank" rel="noopener noreferrer" title="TCT 운영 화면 (새 창)"><span class="partner-logo-box" title="TCT"><img src="assets/img/logos/tct-logo.png" alt="TCT" loading="eager"></span></a></div>
+      <div class="partner-logo-item"><a class="partner-logo-link" href="http://211.225.116.167:8080" target="_blank" rel="noopener noreferrer" title="(주)세인식품 운영 화면 (새 창)"><span class="partner-logo-box" title="(주)세인식품"><img src="assets/img/logos/seine-food.png" alt="(주)세인식품" loading="eager"></span></a></div>
+      <div class="partner-logo-item"><a class="partner-logo-link" href="http://192.168.0.8/publish.htm" target="_blank" rel="noopener noreferrer" title="옵티시스 운영 화면 (새 창)"><span class="partner-logo-box" title="옵티시스"><img src="assets/img/logos/opticis.webp" alt="옵티시스" loading="eager"></span></a></div>
+      <div class="partner-logo-item"><a class="partner-logo-link" href="http://ltc.iptime.org" target="_blank" rel="noopener noreferrer" title="(주)엘티씨 운영 화면 (새 창)"><span class="partner-logo-box" title="(주)엘티씨"><img src="assets/img/logos/ltc.jpg" alt="(주)엘티씨" loading="eager"></span></a></div>
+      <div class="partner-logo-item"><a class="partner-logo-link" href="http://baeksemes.iptime.org" target="_blank" rel="noopener noreferrer" title="백세 운영 화면 (새 창)"><span class="partner-logo-box" title="백세"><img src="assets/img/logos/baekse.png" alt="백세" loading="eager"></span></a></div>
+      <div class="partner-logo-item"><a class="partner-logo-link" href="http://gupanjang.iptime.org" target="_blank" rel="noopener noreferrer" title="갈비구판장(사미헌) 운영 화면 (새 창)"><span class="partner-logo-box" title="갈비구판장(사미헌)"><img src="assets/img/logos/samiheon.png" alt="갈비구판장(사미헌)" loading="eager"></span></a></div>
+      <div class="partner-logo-item"><a class="partner-logo-link" href="http://seoilmes.tplinkdns.com" target="_blank" rel="noopener noreferrer" title="서일퍼시픽 운영 화면 (새 창)"><span class="partner-logo-box" title="서일퍼시픽"><img src="assets/img/logos/seoil-pacific.jpg" alt="서일퍼시픽" loading="eager"></span></a></div>
+      <div class="partner-logo-item"><a class="partner-logo-link" href="http://49.247.42.249" target="_blank" rel="noopener noreferrer" title="쓰리축코리아 운영 화면 (새 창)"><span class="partner-logo-box" title="쓰리축코리아"><img src="assets/img/logos/3axis-korea.png" alt="쓰리축코리아" loading="eager"></span></a></div>
+      <div class="partner-logo-item"><a class="partner-logo-link" href="http://jcr.blue-biz.kr" target="_blank" rel="noopener noreferrer" title="제형센터 운영 화면 (새 창)"><span class="partner-logo-box partner-logo-text" title="제형센터">제형센터</span></a></div>
+      <div class="partner-logo-item"><a class="partner-logo-link" href="http://220.124.57.100:4000" target="_blank" rel="noopener noreferrer" title="쌍영방적 운영 화면 (새 창)"><span class="partner-logo-box" title="쌍영방적"><img src="assets/img/logos/ssangyoung.png" alt="쌍영방적" loading="eager"></span></a></div>
+      <div class="partner-logo-item"><a class="partner-logo-link" href="http://49.247.40.190" target="_blank" rel="noopener noreferrer" title="농업회사법인 (주)포렘 운영 화면 (새 창)"><span class="partner-logo-box" title="농업회사법인 (주)포렘"><img src="assets/img/logos/forem.jpg" alt="농업회사법인 (주)포렘" loading="eager"></span></a></div>
+      <div class="partner-logo-item"><a class="partner-logo-link" href="http://49.247.42.104" target="_blank" rel="noopener noreferrer" title="아이버스 운영 화면 (새 창)"><span class="partner-logo-box" title="아이버스"><img src="assets/img/logos/ivers.jpg" alt="아이버스" loading="eager"></span></a></div>
+      <div class="partner-logo-item"><a class="partner-logo-link" href="http://49.247.46.134" target="_blank" rel="noopener noreferrer" title="새만금화학(주) 운영 화면 (새 창)"><span class="partner-logo-box" title="새만금화학(주)"><img src="assets/img/logos/saemangeum-chem.png" alt="새만금화학(주)" loading="eager"></span></a></div>
+      <div class="partner-logo-item"><a class="partner-logo-link" href="http://115.68.228.213" target="_blank" rel="noopener noreferrer" title="신광식품(3공장) 운영 화면 (새 창)"><span class="partner-logo-box" title="신광식품(3공장)"><img src="assets/img/logos/shinkwang-3rd.png" alt="신광식품(3공장)" loading="eager"></span></a></div>
+      <div class="partner-logo-item"><a class="partner-logo-link" href="http://49.247.172.145" target="_blank" rel="noopener noreferrer" title="바로군 운영 화면 (새 창)"><span class="partner-logo-box" title="바로군"><img src="assets/img/logos/barogun.jpg" alt="바로군" loading="eager"></span></a></div>
+      <div class="partner-logo-item"><a class="partner-logo-link" href="http://hwasan4.iptime.org" target="_blank" rel="noopener noreferrer" title="화산 운영 화면 (새 창)"><span class="partner-logo-box partner-logo-text" title="화산">화산</span></a></div>
+      <div class="partner-logo-item"><a class="partner-logo-link" href="http://220.84.77.121" target="_blank" rel="noopener noreferrer" title="(주)용진정밀 운영 화면 (새 창)"><span class="partner-logo-box" title="(주)용진정밀"><img src="assets/img/logos/yongjin.png" alt="(주)용진정밀" loading="eager"></span></a></div>
+      <div class="partner-logo-item"><a class="partner-logo-link" href="http://brmilk-mes.iptime.org" target="_blank" rel="noopener noreferrer" title="보령우유(주) 운영 화면 (새 창)"><span class="partner-logo-box" title="보령우유(주)"><img src="assets/img/logos/boryeong-milk.png" alt="보령우유(주)" loading="eager"></span></a></div>
+      <div class="partner-logo-item"><a class="partner-logo-link" href="http://49.247.174.67" target="_blank" rel="noopener noreferrer" title="이피캠텍 운영 화면 (새 창)"><span class="partner-logo-box" title="이피캠텍"><img src="assets/img/logos/epcamtech.png" alt="이피캠텍" loading="eager"></span></a></div>
+      <div class="partner-logo-item"><a class="partner-logo-link" href="http://49.247.37.216" target="_blank" rel="noopener noreferrer" title="참사랑에프앤비 운영 화면 (새 창)"><span class="partner-logo-box partner-logo-text" title="참사랑에프앤비">참사랑에프앤비</span></a></div>
+      <div class="partner-logo-item"><a class="partner-logo-link" href="http://chambadames.iptime.org" target="_blank" rel="noopener noreferrer" title="참바다&amp;온쿡 운영 화면 (새 창)"><span class="partner-logo-box" title="참바다&amp;온쿡"><img src="assets/img/logos/chambada.png" alt="참바다&amp;온쿡" loading="eager"></span></a></div>
+      <div class="partner-logo-item"><a class="partner-logo-link" href="http://mes.jellomi.co.kr" target="_blank" rel="noopener noreferrer" title="데코리아 운영 화면 (새 창)"><span class="partner-logo-box" title="데코리아"><img src="assets/img/logos/decoria.png" alt="데코리아" loading="eager"></span></a></div>
+      <div class="partner-logo-item"><a class="partner-logo-link" href="http://dongyoungmes.iptime.org" target="_blank" rel="noopener noreferrer" title="동영금속 운영 화면 (새 창)"><span class="partner-logo-box" title="동영금속"><img src="assets/img/logos/dongyoung.png" alt="동영금속" loading="eager"></span></a></div>
+      <div class="partner-logo-item"><a class="partner-logo-link" href="http://hunhun-mes.iptime.org" target="_blank" rel="noopener noreferrer" title="훈훈 운영 화면 (새 창)"><span class="partner-logo-box" title="훈훈"><img src="assets/img/logos/hunhun.jpg" alt="훈훈" loading="eager"></span></a></div>
+      <div class="partner-logo-item"><a class="partner-logo-link" href="http://woonam.iptime.org" target="_blank" rel="noopener noreferrer" title="(주)우남기공 운영 화면 (새 창)"><span class="partner-logo-box" title="(주)우남기공"><img src="assets/img/logos/woonam.gif" alt="(주)우남기공" loading="eager"></span></a></div>
+      <div class="partner-logo-item"><a class="partner-logo-link" href="http://daeyangmes.iptime.org" target="_blank" rel="noopener noreferrer" title="대양물산 운영 화면 (새 창)"><span class="partner-logo-box" title="대양물산"><img src="assets/img/logos/daeyang.png" alt="대양물산" loading="eager"></span></a></div>
+      <div class="partner-logo-item"><a class="partner-logo-link" href="http://tkmes.iptime.org" target="_blank" rel="noopener noreferrer" title="태광 운영 화면 (새 창)"><span class="partner-logo-box" title="태광"><img src="assets/img/logos/taekwang.png" alt="태광" loading="eager"></span></a></div>
+      <div class="partner-logo-item"><a class="partner-logo-link" href="http://saerombnf.iptime.org" target="_blank" rel="noopener noreferrer" title="새롬비앤에프 운영 화면 (새 창)"><span class="partner-logo-box" title="새롬비앤에프"><img src="assets/img/logos/saerom-bnf.jpg" alt="새롬비앤에프" loading="eager"></span></a></div>
+      <div class="partner-logo-item"><a class="partner-logo-link" href="http://soulnature.iptime.org" target="_blank" rel="noopener noreferrer" title="소울네이처푸드 운영 화면 (새 창)"><span class="partner-logo-box" title="소울네이처푸드"><img src="assets/img/logos/soulnature.svg" alt="소울네이처푸드" loading="eager"></span></a></div>
+      <div class="partner-logo-item"><a class="partner-logo-link" href="http://skfmes.iptime.org" target="_blank" rel="noopener noreferrer" title="(주)신광식품 운영 화면 (새 창)"><span class="partner-logo-box" title="(주)신광식품"><img src="assets/img/logos/shinkwang.png" alt="(주)신광식품" loading="eager"></span></a></div>
+      <div class="partner-logo-item"><a class="partner-logo-link" href="http://gschemi.iptime.org" target="_blank" rel="noopener noreferrer" title="금성화학 운영 화면 (새 창)"><span class="partner-logo-box" title="금성화학"><img src="assets/img/logos/geumsung-chem.gif" alt="금성화학" loading="eager"></span></a></div>
+      <div class="partner-logo-item"><a class="partner-logo-link" href="http://49.247.173.22" target="_blank" rel="noopener noreferrer" title="성원엘리베이터 운영 화면 (새 창)"><span class="partner-logo-box" title="성원엘리베이터"><img src="assets/img/logos/sungwon-elevator.jpg" alt="성원엘리베이터" loading="eager"></span></a></div>
+      <div class="partner-logo-item"><a class="partner-logo-link" href="http://115.68.199.46" target="_blank" rel="noopener noreferrer" title="(주)지원테크 운영 화면 (새 창)"><span class="partner-logo-box" title="(주)지원테크"><img src="assets/img/logos/jiwon-tech.jpg" alt="(주)지원테크" loading="eager"></span></a></div>
+      <div class="partner-logo-item"><a class="partner-logo-link" href="http://isaac-mes.iptime.org" target="_blank" rel="noopener noreferrer" title="이삭식품 운영 화면 (새 창)"><span class="partner-logo-box" title="이삭식품"><img src="assets/img/logos/isaac-food.png" alt="이삭식품" loading="eager"></span></a></div>
+      <div class="partner-logo-item"><a class="partner-logo-link" href="http://mes.beobe.kr" target="_blank" rel="noopener noreferrer" title="베오베 운영 화면 (새 창)"><span class="partner-logo-box" title="베오베"><img src="assets/img/logos/beobe.png" alt="베오베" loading="eager"></span></a></div>
+      <div class="partner-logo-item"><a class="partner-logo-link" href="http://49.247.169.186" target="_blank" rel="noopener noreferrer" title="나눔정밀 운영 화면 (새 창)"><span class="partner-logo-box" title="나눔정밀"><img src="assets/img/logos/nanum.png" alt="나눔정밀" loading="eager"></span></a></div>
+    </div>
+  </div>
+</div>
+
+<div class="app-main">
+<main id="main">
+
+  <!-- ============ HERO — Ops Console ============ -->
+  <section class="hero" id="hero">
+    <div class="container hero-grid">
+      <div class="hero-copy reveal is-visible">
+        <span class="eyebrow">REAL-TIME FACTORY MONITORING</span>
+        <h1>공장 전체를<br><b>실시간</b>으로 확인합니다.</h1>
+        <p>설비·생산·품질·재고 데이터를 하나의 화면으로 연결해 현장의 상황을 더 빠르게 파악하고 대응할 수 있습니다.</p>
+        <div class="hero-ctas">
+          <a href="pages/proof.html" class="btn btn-primary">실제 화면 보기<svg><use href="#ic-arrow"/></svg></a>
+          <a href="pages/contact.html" class="btn btn-outline">무료 진단 신청</a>
+        </div>
+        <div class="trust-strip">
+          <span>MES</span><span>POP</span><span>WMS</span><span>Smart HACCP</span><span>IoT Gateway</span><span>Data Analytics</span>
+        </div>
+      </div>
+
+      <div class="hero-visual reveal reveal-delay-2 is-visible">
+        <div class="dash-frame" id="heroDashFrame" data-needs-verification="true">
+          <span class="demo-flag">DEMO DATA · 샘플 화면</span>
+          <!-- 실제 시스템 화면 캡처 (현장실사 자료), 여러 장이 자동으로 넘어갑니다. 공개 게시 전 고객사 공개 승인 여부 재확인 필요 -->
+          <div class="dash-real-wrap">
+            <div class="dash-chrome"><i></i><i></i><i></i><span>bluefac.console / realtime_overview</span></div>
+            <div class="dash-real-body">
+              <div class="hero-track" id="heroTrack"></div>
+              <button type="button" class="hero-arrow hero-arrow-prev" id="heroPrev" aria-label="이전 화면"><svg class="ic-flip"><use href="#ic-chevron"/></svg></button>
+              <button type="button" class="hero-arrow hero-arrow-next" id="heroNext" aria-label="다음 화면"><svg><use href="#ic-chevron"/></svg></button>
+            </div>
+          </div>
+          <div class="dash-fallback" id="heroFallback">
+            <div class="dash-chrome"><i></i><i></i><i></i><span>bluefac.console / realtime_overview</span></div>
+            <div class="dash-body">
+              <div class="dash-kpis">
+                <div class="dash-kpi"><span>설비 가동률</span><b>87.4%</b></div>
+                <div class="dash-kpi"><span>생산 실적</span><b>12,480</b></div>
+                <div class="dash-kpi"><span>재고 추적</span><b>Live</b></div>
+              </div>
+              <div class="dash-chart" aria-hidden="true">
+                <i style="height:38%"></i><i style="height:62%"></i><i style="height:48%"></i><i style="height:80%"></i><i style="height:56%"></i><i style="height:70%"></i><i style="height:44%"></i><i style="height:66%"></i>
+              </div>
+              <div class="dash-line">
+                <svg viewBox="0 0 300 60" width="100%" height="60" preserveAspectRatio="none" aria-hidden="true">
+                  <polyline points="0,45 40,30 80,38 120,18 160,26 200,12 240,20 300,8" fill="none" stroke="#20C7F4" stroke-width="2.5"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div class="dash-caption" id="heroDashCaption"></div>
+          <div class="hero-dots" id="heroDots"></div>
+        </div>
+
+        <div class="kpi-row" aria-label="핵심 운영 지표 (샘플)">
+          <div class="kpi-card status-ok">
+            <div class="k-icon"><svg><use href="#ic-gauge"/></svg></div>
+            <b>18<span style="font-size:12px;">대</span></b><span>운영 설비</span>
+            <div class="k-bar"><i style="width:82%"></i></div>
+          </div>
+          <div class="kpi-card">
+            <div class="k-icon"><svg><use href="#ic-box"/></svg></div>
+            <b>24<span style="font-size:12px;">건</span></b><span>진행 중 작업</span>
+            <div class="k-bar"><i style="width:60%"></i></div>
+          </div>
+          <div class="kpi-card status-ok">
+            <div class="k-icon"><svg><use href="#ic-shield"/></svg></div>
+            <b>정상</b><span>품질 상태</span>
+            <div class="k-bar"><i style="width:94%"></i></div>
+          </div>
+          <div class="kpi-card status-alert">
+            <div class="k-icon"><svg><use href="#ic-alert"/></svg></div>
+            <b>2<span style="font-size:12px;">건</span></b><span>실시간 알림</span>
+            <div class="k-bar"><i style="width:20%"></i></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 신뢰 지표 ============ -->
+  <section class="trust-section">
+    <div class="container trust-grid" id="trustGrid">
+      <div class="trust-item reveal"><b>2014</b><span>설립</span></div>
+      <div class="trust-item reveal reveal-delay-1"><b>6개</b><span>제품 라인업</span></div>
+      <div class="trust-item reveal reveal-delay-2">
+        <b class="count-up" data-target="130" data-suffix="+">0</b><span>구축 레퍼런스</span>
+        <span class="t-verify" data-needs-verification="true">검증 필요<!-- TODO: 130+ 지표의 정확한 의미와 최신 수치 확인 --></span>
+      </div>
+      <div class="trust-item reveal reveal-delay-3">
+        <b class="count-up" data-target="12" data-suffix="건">0</b><span>보유 특허</span>
+        <span class="t-verify" data-needs-verification="true">검증 필요<!-- TODO: 특허 12건 최신 유효 여부 확인 --></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 현장 문제 칩 ============ -->
+  <section class="section tight">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">FIELD PROBLEMS</span>
+        <h2>데이터는 있는데,<br>판단은 여전히 늦지 않으신가요?</h2>
+      </div>
+      <div class="problem-row reveal" role="group" aria-label="현장 문제 선택 시 관련 솔루션이 강조됩니다">
+        <button type="button" class="problem-chip" data-target="b-fac,b-pop"><span class="p-dot"></span>기록이 여러 시스템에 분산됨<span class="p-mono">→ BlueFAC · BluePOP</span></button>
+        <button type="button" class="problem-chip" data-target="b-pop,b-fac"><span class="p-dot"></span>설비와 생산정보가 연결되지 않음<span class="p-mono">→ BluePOP · BlueFAC</span></button>
+        <button type="button" class="problem-chip" data-target="b-mofac,b-fhms"><span class="p-dot"></span>보고가 늦어 현장 대응이 지연됨<span class="p-mono">→ MoFAC · FHMS</span></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 솔루션 벤토 그리드 (요약) ============ -->
+  <section class="section" id="solutions-preview">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">SOLUTION PLATFORM</span>
+        <h2>현장 솔루션을<br>하나의 플랫폼으로 연결합니다.</h2>
+        <p>위에서 문제를 선택하면 관련된 솔루션 카드가 강조됩니다.</p>
+      </div>
+      <div class="bento reveal">
+        <a href="pages/solutions.html#bluefac" class="b-card b-fac" id="b-fac">
+          <div>
+            <div class="b-icon"><svg><use href="#ic-cpu"/></svg></div>
+            <span class="b-status"><i></i>가동중</span>
+            <h3>BlueFAC</h3>
+            <p>중소기업 전용 스마트 제조 MES — 수주부터 생산·품질·설비 관리, 출하까지 통합 관리합니다.</p>
+            <div class="b-feats"><span>생산관리</span><span>품질·SPC</span><span>바코드·LOT관리</span></div>
+          </div>
+          <span class="b-more">자세히 보기<svg><use href="#ic-arrow"/></svg></span>
+        </a>
+        <a href="pages/solutions.html#bluepop" class="b-card b-pop" id="b-pop">
+          <div class="b-icon"><svg><use href="#ic-gauge"/></svg></div>
+          <span class="b-status"><i></i>가동중</span>
+          <h3>BluePOP</h3>
+          <p>IoT 기반 생산정보 수집장치 — 설비 데이터를 실시간 수집해 서버로 전송합니다.</p>
+          <span class="b-more">자세히 보기<svg><use href="#ic-arrow"/></svg></span>
+        </a>
+        <a href="pages/solutions.html#bluewms" class="b-card b-wms" id="b-wms">
+          <div class="b-icon"><svg><use href="#ic-box"/></svg></div>
+          <span class="b-status"><i></i>가동중</span>
+          <h3>BlueWMS</h3>
+          <p>입고·재고·출고·반품을 하나의 흐름으로 연결하는 창고관리시스템입니다.</p>
+          <span class="b-more">자세히 보기<svg><use href="#ic-arrow"/></svg></span>
+        </a>
+        <a href="pages/solutions.html#fhms" class="b-card b-fhms" id="b-fhms">
+          <div class="b-icon"><svg><use href="#ic-shield"/></svg></div>
+          <span class="b-status"><i></i>가동중</span>
+          <h3>FHMS</h3>
+          <p>Smart HACCP 관리 — CCP와 식품안전 기록을 디지털로 관리합니다.</p>
+          <span class="b-more">자세히 보기<svg><use href="#ic-arrow"/></svg></span>
+        </a>
+        <a href="pages/solutions.html#mofac" class="b-card b-mofac" id="b-mofac">
+          <div class="b-icon"><svg><use href="#ic-mobile"/></svg></div>
+          <span class="b-status"><i></i>가동중</span>
+          <h3>MoFAC</h3>
+          <p>모바일 기반의 현장 모니터링 — 스마트폰·태블릿만으로 현장 업무를 처리합니다.</p>
+          <span class="b-more">자세히 보기<svg><use href="#ic-arrow"/></svg></span>
+        </a>
+        <a href="pages/solutions.html#selffac" class="b-card b-selffac" id="b-selffac">
+          <div class="b-icon"><svg><use href="#ic-cloud"/></svg></div>
+          <span class="b-status"><i></i>가동중</span>
+          <h3>SelfFAC</h3>
+          <p>클라우드 기반 SaaS형 MES — 초기 구축 부담을 줄이고 빠르게 도입합니다.</p>
+          <span class="b-more">자세히 보기<svg><use href="#ic-arrow"/></svg></span>
+        </a>
+      </div>
+      <div class="section-foot-link reveal"><a href="pages/solutions.html" class="btn btn-outline">솔루션 전체 · 연결 구조 · 실제 화면 보기<svg><use href="#ic-arrow"/></svg></a></div>
+    </div>
+  </section>
+
+  <!-- ============ 산업별 적용 티저 ============ -->
+  <section class="section tight light" id="industries-teaser">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">INDUSTRY SCOPE</span>
+        <h2>우리 업종에도 적용할 수 있는지<br>확인해보세요.</h2>
+      </div>
+      <div class="ind-chip-row reveal">
+        <a href="pages/industries.html" class="ind-chip"><span class="i-icon"><svg><use href="#ic-food"/></svg></span><b>식품 제조</b><span>로트·CCP 추적</span></a>
+        <a href="pages/industries.html" class="ind-chip"><span class="i-icon"><svg><use href="#ic-factory"/></svg></span><b>금속·부품 제조</b><span>공정·설비·재고</span></a>
+        <a href="pages/industries.html" class="ind-chip"><span class="i-icon"><svg><use href="#ic-ship"/></svg></span><b>스마트조선</b><span>설비·부품 이력</span></a>
+        <a href="pages/industries.html" class="ind-chip"><span class="i-icon"><svg><use href="#ic-cloud"/></svg></span><b>스마트팜·기타 제조</b><span>환경·생산 이력</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CTA 배너 ============ -->
+  <section class="cta-banner">
+    <div class="container reveal">
+      <div>
+        <h2>우리 공장에 맞는 스마트화 방향, 먼저 진단해보세요.</h2>
+        <p>간단한 정보를 남겨주시면 담당자가 현황을 확인한 뒤 연락드립니다.</p>
+      </div>
+      <a href="pages/contact.html" class="btn btn-primary">무료 진단 신청하기<svg><use href="#ic-arrow"/></svg></a>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="index.html" class="logo"><span class="mark"><svg viewBox="0 0 40 40" fill="none"><path d="M20 2 36 11v18L20 38 4 29V11L20 2Z" fill="#0D222C" stroke="#20C7F4" stroke-width="1.6"/><path d="M13 24V15l7-4 7 4v9l-7 4-7-4Z" fill="#20C7F4"/></svg></span>BlueBiz</a>
+        <p>제조 현장의 데이터를 운영자의 언어로 보여주는 기술 기업, 블루비즈입니다.</p>
+      </div>
+      <div class="footer-col">
+        <h5>메뉴</h5>
+        <ul>
+          <li><a href="pages/about.html">회사소개</a></li>
+          <li><a href="pages/industries.html">산업별 적용</a></li>
+          <li><a href="pages/cases.html">구축사례</a></li>
+          <li><a href="pages/resources.html">자료실</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>솔루션</h5>
+        <ul>
+          <li><a href="pages/solutions.html#bluefac">BlueFAC</a></li>
+          <li><a href="pages/solutions.html#bluepop">BluePOP</a></li>
+          <li><a href="pages/solutions.html#bluewms">BlueWMS</a></li>
+          <li><a href="pages/solutions.html#fhms">FHMS</a></li>
+          <li><a href="pages/solutions.html#mofac">MoFAC · SelfFAC</a></li>
+        </ul>
+      </div>
+      <div class="footer-col footer-contact">
+        <h5>고객지원</h5>
+        <p>호남사업본부(본사)<br>전라북도 전주시 덕진구 만성동 1345-3<br>스페이스온 지식산업센터 3046-3049호<br>T. 063-214-0210 · F. 063-214-0211</p>
+        <p style="margin-top:10px;">서울사업본부<br>(우)14353 경기 광명시 일직로 43<br>GIDC 광명역 A동 1409호<br>T. 070-7779-2002</p>
+        <p style="margin-top:10px;">영남사업본부<br>경상남도 창원시 의창구 팔용동 40-6<br>창원스마트혁신지원센터 405호<br>T. 070-7779-2004</p>
+        <p style="margin-top:10px;">이메일 · <a href="mailto:bluebiz@blue-biz.co.kr">bluebiz@blue-biz.co.kr</a></p>
+        <p style="margin-top:6px;" data-needs-verification="true">사업자등록번호 418-81-48029 · 대표 김용현<!-- TODO: 공식 사업자등록증 기준으로 재확인 필요 (출처: 제3자 기업정보 조회) --></p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="legal">
+        <a href="pages/privacy-policy.html">개인정보처리방침</a>
+        <a href="pages/terms-of-service.html">이용약관</a>
+      </div>
+      <span class="copy">Copyright(c) BlueBiz Co., Ltd. All rights reserved.</span>
+    </div>
+  </div>
+</footer>
+</div><!-- /.app-main -->
+
+<div class="mobile-cta-bar">
+  <a href="pages/contact.html" class="btn btn-primary">무료 진단 신청하기</a>
+</div>
+
+<script src="assets/js/main.js" defer></script>
+</body>
+</html>
